@@ -25,6 +25,8 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
+        "firebase": "^12.5.0",
+        "firebase-admin": "^13.5.0",
         "morgan": "^1.10.0",
         "openai": "^4.63.0",
         "robots-parser": "^3.0.1"

@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import { config } from './lib/config.js';
 import { createLogger, requestLogger } from './lib/logger.js';
 import { crawlHandler } from './routes/crawl.js';
+import { domainCheckHandler } from './routes/domain-checker-route.js';
 import { searchHandler } from './routes/search.js';
 import { sitemapHandler } from './routes/sitemap.js';
 
@@ -35,6 +36,8 @@ app.get('/health', (req, res) => {
 app.post('/api/crawl', crawlHandler);
 app.post('/api/sitemap', sitemapHandler);
 app.post('/api/search', searchHandler);
+app.get('/api/domain-check', domainCheckHandler);
+
 
 // Root endpoint
 app.get('/', (req, res) => {

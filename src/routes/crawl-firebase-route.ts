@@ -4,24 +4,12 @@ import { Request, Response } from 'express';
 import { chunkText, generateEmbedding } from '../lib/embeddings.js';
 import { delay, scrapeUrl } from '../lib/firecrawl.js';
 import { createLogger } from '../lib/logger.js';
-import { addUserToDomain, checkDomainExists, upsertVectors } from '../lib/pinecone.js';
+import { addUserToDomain, checkDomainExists, upsertVectors } from '../lib/firebase.js';
 
 const logger = createLogger('CrawlRoute');
 
-interface CrawlResult {
-    url: string;
-    success: boolean;
-    chunks: number;
-    vectors: number;
-    wasAlreadyIndexed?: boolean;
-}
 
-interface CrawlError {
-    url: string;
-    error: string;
-}
-
-export async function crawlHandler(req: Request, res: Response) {
+export async function crawlFirebaseHandler(req: Request, res: Response) {
     const { urls, userEmail } = req.body;
 
     // Set up SSE headers
